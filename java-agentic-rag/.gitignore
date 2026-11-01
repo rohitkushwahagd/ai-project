@@ -1,0 +1,15 @@
+target/
+.env
+*.log
+.idea/
+*.iml
+evaluation/results/
+__pycache__/
+*.pyc
+observability/secrets/
+work/
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/test-results/
+src/main/resources/static/ui/

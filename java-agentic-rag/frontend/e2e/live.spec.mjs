@@ -1,0 +1,55 @@
+import { test, expect } from '@playwright/test';
+import { readFileSync } from 'node:fs';
+import { createHmac, randomUUID } from 'node:crypto';
+
+test('live Angular document lifecycle, RAG answer, source and feedback',async({page,request})=>{
+  test.setTimeout(360000);
+  const secret=readFileSync(new URL('../../.env',import.meta.url),'utf8').split(/\r?\n/).find(line=>line.startsWith('JWT_SECRET=')).slice(11);
+  const tenant='ui-'+randomUUID();
+  const encode=value=>Buffer.from(JSON.stringify(value)).toString('base64url');
+  const head=encode({alg:'HS256',typ:'JWT'}), payload=encode({sub:'ui-test',iss:'project1-local',aud:'project1-api',tenant_id:tenant,scope:'rag.read rag.write',exp:Math.floor(Date.now()/1000)+900});
+  const token=`${head}.${payload}.${createHmac('sha256',Buffer.from(secret,'base64')).update(`${head}.${payload}`).digest('base64url')}`;
+  const headers={Authorization:`Bearer ${token}`}; let sourceId;
+  const errors=[]; page.on('pageerror',error=>errors.push(error.message));
+  try {
+    await page.goto('/ui/index.html');
+    await page.getByRole('button',{name:'Connect workspace',exact:true}).click();
+    await page.getByLabel('Access token').fill(token);
+    await page.getByRole('button',{name:'Connect',exact:true}).click();
+    await expect(page.getByRole('button',{name:'Workspace connected'})).toBeVisible();
+    await page.getByRole('button',{name:'Documents',exact:true}).click();
+    await page.getByRole('button',{name:'+ Add document',exact:true}).click();
+    await page.getByLabel('Title',{exact:true}).fill('Synthetic Orion runbook');
+    await page.getByLabel('Content',{exact:true}).fill('Orion P1 incidents must be acknowledged within 17 minutes. The Aurora support team owns escalation. This is a synthetic test runbook.');
+    await page.getByRole('button',{name:'Save and index'}).click();
+    await expect(page.getByRole('dialog')).toHaveCount(0);
+    await expect.poll(async()=>{const docs=await (await request.get('/api/documents',{headers})).json();sourceId=docs[0]?.id;return docs[0]?.status;},{timeout:120000,intervals:[2000,4000]}).toBe('READY');
+    await page.getByRole('button',{name:'Refresh status'}).click();
+    await expect(page.locator('.badge')).toHaveText('READY');
+    await page.getByRole('button',{name:'Ask your knowledge'}).click();
+    await page.getByLabel('Your question').fill('How many minutes to acknowledge an Orion P1 incident?');
+    await page.getByRole('button',{name:'Ask question ↗'}).click();
+    await expect(page.getByRole('button',{name:'Send feedback'})).toBeVisible({timeout:180000});
+    await expect(page.locator('.answer-text').last()).toContainText('17');
+    await page.locator('.evidence-card summary').first().click();
+    await page.getByRole('button',{name:'Read full source ↗'}).first().click();
+    await expect(page.locator('dialog pre')).toContainText('Aurora');
+    await page.getByRole('button',{name:'Close',exact:true}).click();
+    await page.getByRole('button',{name:'Send feedback'}).click();
+    await expect(page.getByRole('button',{name:'Feedback saved'})).toBeVisible();
+    await page.getByRole('button',{name:'Documents',exact:true}).click();
+    await page.getByRole('button',{name:'Replace',exact:true}).click();
+    await page.getByLabel('Content',{exact:true}).fill('Orion P1 incidents must be acknowledged within 18 minutes. The Aurora support team owns escalation. Synthetic revised runbook.');
+    await page.getByRole('button',{name:'Save and index'}).click();
+    await expect(page.getByRole('dialog')).toHaveCount(0);
+    const old=sourceId;
+    await expect.poll(async()=>{const docs=await (await request.get('/api/documents',{headers})).json();sourceId=docs[0]?.id;return docs[0]?.activeSourceId!==old && docs[0]?.status==='READY';},{timeout:120000,intervals:[2000,4000]}).toBe(true);
+    await page.getByRole('button',{name:'Refresh status'}).click();
+    page.once('dialog',dialog=>dialog.accept());
+    await page.getByRole('button',{name:'Delete',exact:true}).click();
+    await expect(page.getByText('No documents on this page.')).toBeVisible();
+    await page.reload();
+    await expect(page.getByRole('button',{name:'Connect workspace',exact:true})).toBeVisible();
+    expect(errors).toEqual([]);
+  } finally { if(sourceId) await request.delete(`/sources/${sourceId}`,{headers}); }
+});

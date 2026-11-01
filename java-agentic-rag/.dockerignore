@@ -1,0 +1,12 @@
+target
+.env
+.git
+work
+evaluation/results
+observability/secrets
+frontend/node_modules
+frontend/dist
+frontend/.angular
+frontend/test-results
+*.log
+src/main/resources/static/ui

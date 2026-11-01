@@ -1,0 +1,44 @@
+name: Project 1 verification
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Angular build and stream tests
+        working-directory: frontend
+        run: |
+          npm ci
+          npm test
+          npm run build
+      - name: Angular browser regression tests (controlled API responses)
+        working-directory: frontend
+        env:
+          UI_BASE_URL: http://127.0.0.1:4200
+          UI_START_PREVIEW: '1'
+        run: |
+          npx playwright install --with-deps chromium --only-shell
+          npx playwright test e2e/ui.spec.mjs
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - name: Unit and Postgres/Kafka/MCP integration tests
+        run: sh mvnw -B -ntp verify
+      - name: Evaluation metric tests
+        run: python3 -m unittest discover -s evaluation -p 'test_*.py'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verification-and-evaluation
+          path: |
+            target/surefire-reports
+            target/failsafe-reports
+            evaluation/results

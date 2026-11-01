@@ -1,0 +1,164 @@
+{
+  "version": "synthetic-v2",
+  "split": "baseline-development",
+  "documents": [
+    {
+      "id": "orion",
+      "kind": "runbooks",
+      "title": "Orion P1 policy",
+      "text": "Orion P1 incidents must be acknowledged within 17 minutes. Escalate to the Aurora support team."
+    },
+    {
+      "id": "atlas",
+      "kind": "runbooks",
+      "title": "Atlas backup policy",
+      "text": "Atlas backups run every 6 hours and are retained for 14 days. Restore drills run each Friday."
+    },
+    {
+      "id": "cedar",
+      "kind": "docs",
+      "title": "Cedar support hours",
+      "text": "Cedar support operates from 08:00 to 18:00 UTC on weekdays. Weekend support is for P1 incidents only."
+    },
+    {
+      "id": "maple",
+      "kind": "tickets",
+      "title": "Maple incident INC-204",
+      "text": "Maple incident INC-204 was caused by an expired TLS certificate. The assigned owner is Priya."
+    },
+    {
+      "id": "birch",
+      "kind": "runbooks",
+      "title": "Birch rollback policy",
+      "text": "For Birch, rollback when the error rate exceeds 4 percent for 5 minutes. The rollback owner is the release captain."
+    },
+    {
+      "id": "willow",
+      "kind": "docs",
+      "title": "Willow API limits",
+      "text": "The Willow API allows 120 requests per minute per tenant. Clients should use exponential backoff after HTTP 429."
+    },
+    {
+      "id": "pioneer",
+      "kind": "runbooks",
+      "title": "Pioneer cache policy",
+      "text": "Pioneer query results expire after 10 minutes. Source updates invalidate cached query results."
+    },
+    {
+      "id": "harbor",
+      "kind": "tickets",
+      "title": "Harbor incident INC-881",
+      "text": "Harbor incident INC-881 is resolved. The root cause was database connection exhaustion."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "question": "How soon must Orion P1 incidents be acknowledged and who receives escalation?",
+      "relevant": [
+        "orion"
+      ],
+      "expectedFacts": [
+        "17",
+        "Aurora"
+      ]
+    },
+    {
+      "id": "q2",
+      "question": "How frequently are Atlas backups taken and how long are they retained?",
+      "relevant": [
+        "atlas"
+      ],
+      "expectedFacts": [
+        "6",
+        "14"
+      ]
+    },
+    {
+      "id": "q3",
+      "question": "When is Cedar support available on weekdays?",
+      "relevant": [
+        "cedar"
+      ],
+      "expectedFacts": [
+        "08:00",
+        "18:00"
+      ]
+    },
+    {
+      "id": "q4",
+      "question": "Who owns Maple INC-204 and what caused it?",
+      "relevant": [
+        "maple"
+      ],
+      "expectedFacts": [
+        "Priya",
+        "certificate"
+      ]
+    },
+    {
+      "id": "q5",
+      "question": "When should the Birch service be rolled back?",
+      "relevant": [
+        "birch"
+      ],
+      "expectedFacts": [
+        "4",
+        "5"
+      ]
+    },
+    {
+      "id": "q6",
+      "question": "What is the Willow tenant rate limit?",
+      "relevant": [
+        "willow"
+      ],
+      "expectedFacts": [
+        "120"
+      ]
+    },
+    {
+      "id": "q7",
+      "question": "When do Pioneer cached query results expire?",
+      "relevant": [
+        "pioneer"
+      ],
+      "expectedFacts": [
+        "10"
+      ]
+    },
+    {
+      "id": "q8",
+      "question": "What caused Harbor INC-881?",
+      "relevant": [
+        "harbor"
+      ],
+      "expectedFacts": [
+        "connection"
+      ]
+    },
+    {
+      "id": "q9",
+      "question": "What are the acknowledgement policy for Orion and backup retention for Atlas?",
+      "relevant": [
+        "orion",
+        "atlas"
+      ],
+      "expectedFacts": [
+        "17",
+        "14"
+      ]
+    },
+    {
+      "id": "q10",
+      "question": "What is the CEO phone number for the fictional Zenith organization?",
+      "relevant": [],
+      "expectedFacts": [],
+      "abstentionPhrases": [
+        "don't have", "do not have", "not provided", "not available", "insufficient",
+        "not contain", "not include", "cannot determine", "can't determine", "no information",
+        "not specified", "not mentioned", "doesn't contain", "isn't available"
+      ]
+    }
+  ]
+}

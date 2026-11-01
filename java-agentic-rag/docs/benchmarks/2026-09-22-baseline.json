@@ -1,0 +1,690 @@
+{
+  "dataset": "synthetic-v2",
+  "datasetSha256": "f7fbf3763af6edb6733ed0f16d71c800112cc89f2e6ea92d2f6c9438836ce45c",
+  "split": "baseline-development",
+  "timestamp": "2026-09-22T09:39:09Z",
+  "tenant": "eval-2ed4ef26c45b",
+  "corpusDocuments": 8,
+  "plannedSamples": 10,
+  "samples": 10,
+  "judgeModelRequested": null,
+  "judgeSkipped": true,
+  "concurrency": 1,
+  "commit": null,
+  "hardware": "Intel Core i5-10300H; 8 GB host RAM; Docker CPU inference",
+  "runner": {
+    "system": "Windows",
+    "machine": "AMD64",
+    "cpuCount": 8
+  },
+  "applicationConfigSha256": "26c0bb0cd14897051afa442a30db7c88d4a444475211fe9795ca1d53759ad402",
+  "modelProvenance": "The application API does not expose actual runtime chat/embedding model IDs or digests. The config hash identifies the repository file, not resolved server environment settings. judgeModelRequested identifies the requested judge tag, not an immutable model digest. Record actual Ollama model digests and server settings separately for benchmark comparisons.",
+  "measurementNotes": "Synthetic development set, not a held-out benchmark. Source-level P@5 uses five as denominator even with fewer results; duplicate chunks cannot inflate relevance. Quality requests bypass response cache; embedding/model caches may be warm. Fact coverage and abstention phrase matches are lexical proxies, not semantic correctness or safe-refusal judgments. Model-assisted faithfulness scoring needs human audit. Small samples cannot establish a robust p99. Hosted cost is zero for local Ollama; electricity/hardware cost is unmeasured.",
+  "precisionAt5": 0.2222222222222222,
+  "recallAt5": 1.0,
+  "faithfulness": null,
+  "expectedFactCoverage": 1.0,
+  "abstentionPhraseMatch": 1.0,
+  "p50Ms": 9745.791199995438,
+  "p95Ms": 116308.75910000759,
+  "p99Ms": 116308.75910000759,
+  "firstTokenP95Ms": 114776.15200000582,
+  "inputTokensMean": 396.2,
+  "outputTokensMean": 21.9,
+  "tokenUsageSamples": 10,
+  "hostedTokenCostUSD": 0,
+  "localComputeCostUSD": null,
+  "cacheComparison": {
+    "pairs": [
+      {
+        "id": "q1",
+        "uncachedMs": 4994.930899993051,
+        "cachedMs": 2124.118300009286,
+        "latencyReductionPercent": 57.47452081845134
+      },
+      {
+        "id": "q2",
+        "uncachedMs": 9683.938000001945,
+        "cachedMs": 2072.4661000131164,
+        "latencyReductionPercent": 78.59893258287383
+      },
+      {
+        "id": "q3",
+        "uncachedMs": 4307.006399991224,
+        "cachedMs": 3840.8393999852706,
+        "latencyReductionPercent": 10.823457332380627
+      }
+    ],
+    "latencyReductionPercent": 48.965636911235265
+  },
+  "sourceMapping": {
+    "orion": "6b0f1b76-1323-3848-9e16-2badb6b37f2b",
+    "atlas": "2caeb212-365e-3949-bcd6-d9fc27384568",
+    "cedar": "9896a071-6c99-3dce-a7d0-8ce5e9a32ea5",
+    "maple": "d4ea3cf4-5e33-35ba-9ac7-b118dd119faf",
+    "birch": "44d6f01b-3c89-3af3-9ab8-47ad54163bca",
+    "willow": "127e8e07-a2eb-3051-b51c-aab792e03008",
+    "pioneer": "e9feec9c-449e-3b0a-bdf9-23d30d2b36d6",
+    "harbor": "2c40e028-ed8d-3114-9e87-479c339fdd78"
+  },
+  "records": [
+    {
+      "id": "q1",
+      "round": 1,
+      "precisionAt5": 0.2,
+      "recallAt5": 1.0,
+      "faithfulness": null,
+      "judgeClaims": [],
+      "firstTokenMs": 114776.15200000582,
+      "completeMs": 116308.75910000759,
+      "result": {
+        "queryId": "eae769e3-b099-4c2d-9181-a53ee6d20485",
+        "answer": "Orion P1 incidents must be acknowledged within 17 minutes. Escalation is to the Aurora support team.",
+        "sources": [
+          {
+            "chunkId": "24de1338-f4e9-3cfe-a411-8a8f418d14eb",
+            "sourceId": "6b0f1b76-1323-3848-9e16-2badb6b37f2b",
+            "title": "Orion P1 policy",
+            "text": "Orion P1 incidents must be acknowledged within 17 minutes. Escalate to the Aurora support team.",
+            "score": 0.7724801698303425
+          },
+          {
+            "chunkId": "a4acfcdd-9488-3e57-9f5d-c1736081ec84",
+            "sourceId": "9896a071-6c99-3dce-a7d0-8ce5e9a32ea5",
+            "title": "Cedar support hours",
+            "text": "Cedar support operates from 08:00 to 18:00 UTC on weekdays. Weekend support is for P1 incidents only.",
+            "score": 0.47744105742437654
+          },
+          {
+            "chunkId": "a90ec033-8cea-38cf-9854-8ebf1080d28b",
+            "sourceId": "2c40e028-ed8d-3114-9e87-479c339fdd78",
+            "title": "Harbor incident INC-881",
+            "text": "Harbor incident INC-881 is resolved. The root cause was database connection exhaustion.",
+            "score": 0.44737338815968564
+          },
+          {
+            "chunkId": "f93ecc7b-69bd-3f58-bcb1-38dbec6456df",
+            "sourceId": "d4ea3cf4-5e33-35ba-9ac7-b118dd119faf",
+            "title": "Maple incident INC-204",
+            "text": "Maple incident INC-204 was caused by an expired TLS certificate. The assigned owner is Priya.",
+            "score": 0.4421935508020585
+          },
+          {
+            "chunkId": "0dac8818-790f-34e5-ae54-efb045303459",
+            "sourceId": "44d6f01b-3c89-3af3-9ab8-47ad54163bca",
+            "title": "Birch rollback policy",
+            "text": "For Birch, rollback when the error rate exceeds 4 percent for 5 minutes. The rollback owner is the release captain.",
+            "score": 0.41833042507275886
+          }
+        ],
+        "cached": false,
+        "latencyMs": 114215,
+        "inputTokens": 400,
+        "outputTokens": 25,
+        "toolTrace": []
+      },
+      "expectedFactCoverage": 1.0,
+      "abstentionPhraseMatch": null,
+      "relevantSourceIds": [
+        "6b0f1b76-1323-3848-9e16-2badb6b37f2b"
+      ]
+    },
+    {
+      "id": "q2",
+      "round": 1,
+      "precisionAt5": 0.2,
+      "recallAt5": 1.0,
+      "faithfulness": null,
+      "judgeClaims": [],
+      "firstTokenMs": 8961.638299981132,
+      "completeMs": 10130.323699995643,
+      "result": {
+        "queryId": "a8615400-f54e-406a-bb55-587394a52ad3",
+        "answer": "Atlas backups run every 6 hours and are retained for 14 days.",
+        "sources": [
+          {
+            "chunkId": "e7307432-e6c1-3765-82f0-c096bda027c9",
+            "sourceId": "2caeb212-365e-3949-bcd6-d9fc27384568",
+            "title": "Atlas backup policy",
+            "text": "Atlas backups run every 6 hours and are retained for 14 days. Restore drills run each Friday.",
+            "score": 0.7660854179960989
+          },
+          {
+            "chunkId": "0dac8818-790f-34e5-ae54-efb045303459",
+            "sourceId": "44d6f01b-3c89-3af3-9ab8-47ad54163bca",
+            "title": "Birch rollback policy",
+            "text": "For Birch, rollback when the error rate exceeds 4 percent for 5 minutes. The rollback owner is the release captain.",
+            "score": 0.444267037121586
+          },
+          {
+            "chunkId": "44dcdc9a-ff01-3d48-ba5c-5f4631893392",
+            "sourceId": "e9feec9c-449e-3b0a-bdf9-23d30d2b36d6",
+            "title": "Pioneer cache policy",
+            "text": "Pioneer query results expire after 10 minutes. Source updates invalidate cached query results.",
+            "score": 0.4117921191283646
+          },
+          {
+            "chunkId": "24de1338-f4e9-3cfe-a411-8a8f418d14eb",
+            "sourceId": "6b0f1b76-1323-3848-9e16-2badb6b37f2b",
+            "title": "Orion P1 policy",
+            "text": "Orion P1 incidents must be acknowledged within 17 minutes. Escalate to the Aurora support team.",
+            "score": 0.38498325168886804
+          },
+          {
+            "chunkId": "a4acfcdd-9488-3e57-9f5d-c1736081ec84",
+            "sourceId": "9896a071-6c99-3dce-a7d0-8ce5e9a32ea5",
+            "title": "Cedar support hours",
+            "text": "Cedar support operates from 08:00 to 18:00 UTC on weekdays. Weekend support is for P1 incidents only.",
+            "score": 0.38168685763714977
+          }
+        ],
+        "cached": false,
+        "latencyMs": 7970,
+        "inputTokens": 398,
+        "outputTokens": 17,
+        "toolTrace": []
+      },
+      "expectedFactCoverage": 1.0,
+      "abstentionPhraseMatch": null,
+      "relevantSourceIds": [
+        "2caeb212-365e-3949-bcd6-d9fc27384568"
+      ]
+    },
+    {
+      "id": "q3",
+      "round": 1,
+      "precisionAt5": 0.2,
+      "recallAt5": 1.0,
+      "faithfulness": null,
+      "judgeClaims": [],
+      "firstTokenMs": 8055.93139998382,
+      "completeMs": 9544.44919998059,
+      "result": {
+        "queryId": "43d6a75d-7c3d-4f8f-8095-401eb38df257",
+        "answer": "Cedar support is available from 08:00 to 18:00 UTC on weekdays.",
+        "sources": [
+          {
+            "chunkId": "a4acfcdd-9488-3e57-9f5d-c1736081ec84",
+            "sourceId": "9896a071-6c99-3dce-a7d0-8ce5e9a32ea5",
+            "title": "Cedar support hours",
+            "text": "Cedar support operates from 08:00 to 18:00 UTC on weekdays. Weekend support is for P1 incidents only.",
+            "score": 0.8238790874697722
+          },
+          {
+            "chunkId": "e7307432-e6c1-3765-82f0-c096bda027c9",
+            "sourceId": "2caeb212-365e-3949-bcd6-d9fc27384568",
+            "title": "Atlas backup policy",
+            "text": "Atlas backups run every 6 hours and are retained for 14 days. Restore drills run each Friday.",
+            "score": 0.45597758960456725
+          },
+          {
+            "chunkId": "0dac8818-790f-34e5-ae54-efb045303459",
+            "sourceId": "44d6f01b-3c89-3af3-9ab8-47ad54163bca",
+            "title": "Birch rollback policy",
+            "text": "For Birch, rollback when the error rate exceeds 4 percent for 5 minutes. The rollback owner is the release captain.",
+            "score": 0.4347139603452042
+          },
+          {
+            "chunkId": "24de1338-f4e9-3cfe-a411-8a8f418d14eb",
+            "sourceId": "6b0f1b76-1323-3848-9e16-2badb6b37f2b",
+            "title": "Orion P1 policy",
+            "text": "Orion P1 incidents must be acknowledged within 17 minutes. Escalate to the Aurora support team.",
+            "score": 0.4256711847390157
+          },
+          {
+            "chunkId": "44dcdc9a-ff01-3d48-ba5c-5f4631893392",
+            "sourceId": "e9feec9c-449e-3b0a-bdf9-23d30d2b36d6",
+            "title": "Pioneer cache policy",
+            "text": "Pioneer query results expire after 10 minutes. Source updates invalidate cached query results.",
+            "score": 0.3958788129489362
+          }
+        ],
+        "cached": false,
+        "latencyMs": 7503,
+        "inputTokens": 393,
+        "outputTokens": 24,
+        "toolTrace": []
+      },
+      "expectedFactCoverage": 1.0,
+      "abstentionPhraseMatch": null,
+      "relevantSourceIds": [
+        "9896a071-6c99-3dce-a7d0-8ce5e9a32ea5"
+      ]
+    },
+    {
+      "id": "q4",
+      "round": 1,
+      "precisionAt5": 0.2,
+      "recallAt5": 1.0,
+      "faithfulness": null,
+      "judgeClaims": [],
+      "firstTokenMs": 7875.558300002012,
+      "completeMs": 9849.26099999575,
+      "result": {
+        "queryId": "19f7efce-99bb-48d8-8224-44b2d0ade2ed",
+        "answer": "The owner of Maple incident INC-204 is Priya. The incident was caused by an expired TLS certificate.",
+        "sources": [
+          {
+            "chunkId": "f93ecc7b-69bd-3f58-bcb1-38dbec6456df",
+            "sourceId": "d4ea3cf4-5e33-35ba-9ac7-b118dd119faf",
+            "title": "Maple incident INC-204",
+            "text": "Maple incident INC-204 was caused by an expired TLS certificate. The assigned owner is Priya.",
+            "score": 0.7335165311838571
+          },
+          {
+            "chunkId": "a90ec033-8cea-38cf-9854-8ebf1080d28b",
+            "sourceId": "2c40e028-ed8d-3114-9e87-479c339fdd78",
+            "title": "Harbor incident INC-881",
+            "text": "Harbor incident INC-881 is resolved. The root cause was database connection exhaustion.",
+            "score": 0.4727038287233797
+          },
+          {
+            "chunkId": "0dac8818-790f-34e5-ae54-efb045303459",
+            "sourceId": "44d6f01b-3c89-3af3-9ab8-47ad54163bca",
+            "title": "Birch rollback policy",
+            "text": "For Birch, rollback when the error rate exceeds 4 percent for 5 minutes. The rollback owner is the release captain.",
+            "score": 0.4281605599596483
+          },
+          {
+            "chunkId": "a4acfcdd-9488-3e57-9f5d-c1736081ec84",
+            "sourceId": "9896a071-6c99-3dce-a7d0-8ce5e9a32ea5",
+            "title": "Cedar support hours",
+            "text": "Cedar support operates from 08:00 to 18:00 UTC on weekdays. Weekend support is for P1 incidents only.",
+            "score": 0.34820253120044725
+          },
+          {
+            "chunkId": "e7307432-e6c1-3765-82f0-c096bda027c9",
+            "sourceId": "2caeb212-365e-3949-bcd6-d9fc27384568",
+            "title": "Atlas backup policy",
+            "text": "Atlas backups run every 6 hours and are retained for 14 days. Restore drills run each Friday.",
+            "score": 0.34470264428611264
+          }
+        ],
+        "cached": false,
+        "latencyMs": 7772,
+        "inputTokens": 394,
+        "outputTokens": 25,
+        "toolTrace": []
+      },
+      "expectedFactCoverage": 1.0,
+      "abstentionPhraseMatch": null,
+      "relevantSourceIds": [
+        "d4ea3cf4-5e33-35ba-9ac7-b118dd119faf"
+      ]
+    },
+    {
+      "id": "q5",
+      "round": 1,
+      "precisionAt5": 0.2,
+      "recallAt5": 1.0,
+      "faithfulness": null,
+      "judgeClaims": [],
+      "firstTokenMs": 7906.238499999745,
+      "completeMs": 9745.791199995438,
+      "result": {
+        "queryId": "323785bf-fe40-4c38-9f65-3dbc782b2874",
+        "answer": "The Birch service should be rolled back when the error rate exceeds 4 percent for 5 minutes. The rollback owner is the release captain.",
+        "sources": [
+          {
+            "chunkId": "0dac8818-790f-34e5-ae54-efb045303459",
+            "sourceId": "44d6f01b-3c89-3af3-9ab8-47ad54163bca",
+            "title": "Birch rollback policy",
+            "text": "For Birch, rollback when the error rate exceeds 4 percent for 5 minutes. The rollback owner is the release captain.",
+            "score": 0.6655035075405916
+          },
+          {
+            "chunkId": "a4acfcdd-9488-3e57-9f5d-c1736081ec84",
+            "sourceId": "9896a071-6c99-3dce-a7d0-8ce5e9a32ea5",
+            "title": "Cedar support hours",
+            "text": "Cedar support operates from 08:00 to 18:00 UTC on weekdays. Weekend support is for P1 incidents only.",
+            "score": 0.4678397016907583
+          },
+          {
+            "chunkId": "f93ecc7b-69bd-3f58-bcb1-38dbec6456df",
+            "sourceId": "d4ea3cf4-5e33-35ba-9ac7-b118dd119faf",
+            "title": "Maple incident INC-204",
+            "text": "Maple incident INC-204 was caused by an expired TLS certificate. The assigned owner is Priya.",
+            "score": 0.45736502064411455
+          },
+          {
+            "chunkId": "8468bdee-7671-356e-94de-ac6524aa4d16",
+            "sourceId": "127e8e07-a2eb-3051-b51c-aab792e03008",
+            "title": "Willow API limits",
+            "text": "The Willow API allows 120 requests per minute per tenant. Clients should use exponential backoff after HTTP 429.",
+            "score": 0.45613537151295575
+          },
+          {
+            "chunkId": "24de1338-f4e9-3cfe-a411-8a8f418d14eb",
+            "sourceId": "6b0f1b76-1323-3848-9e16-2badb6b37f2b",
+            "title": "Orion P1 policy",
+            "text": "Orion P1 incidents must be acknowledged within 17 minutes. Escalate to the Aurora support team.",
+            "score": 0.4329139133044437
+          }
+        ],
+        "cached": false,
+        "latencyMs": 7669,
+        "inputTokens": 401,
+        "outputTokens": 29,
+        "toolTrace": []
+      },
+      "expectedFactCoverage": 1.0,
+      "abstentionPhraseMatch": null,
+      "relevantSourceIds": [
+        "44d6f01b-3c89-3af3-9ab8-47ad54163bca"
+      ]
+    },
+    {
+      "id": "q6",
+      "round": 1,
+      "precisionAt5": 0.2,
+      "recallAt5": 1.0,
+      "faithfulness": null,
+      "judgeClaims": [],
+      "firstTokenMs": 7470.558000000892,
+      "completeMs": 8804.771399998572,
+      "result": {
+        "queryId": "50d1b0ea-e76c-4664-9281-9c1b7bba4c87",
+        "answer": "The Willow API allows 120 requests per minute per tenant.",
+        "sources": [
+          {
+            "chunkId": "8468bdee-7671-356e-94de-ac6524aa4d16",
+            "sourceId": "127e8e07-a2eb-3051-b51c-aab792e03008",
+            "title": "Willow API limits",
+            "text": "The Willow API allows 120 requests per minute per tenant. Clients should use exponential backoff after HTTP 429.",
+            "score": 0.701883173886859
+          },
+          {
+            "chunkId": "0dac8818-790f-34e5-ae54-efb045303459",
+            "sourceId": "44d6f01b-3c89-3af3-9ab8-47ad54163bca",
+            "title": "Birch rollback policy",
+            "text": "For Birch, rollback when the error rate exceeds 4 percent for 5 minutes. The rollback owner is the release captain.",
+            "score": 0.5044904224973079
+          },
+          {
+            "chunkId": "f93ecc7b-69bd-3f58-bcb1-38dbec6456df",
+            "sourceId": "d4ea3cf4-5e33-35ba-9ac7-b118dd119faf",
+            "title": "Maple incident INC-204",
+            "text": "Maple incident INC-204 was caused by an expired TLS certificate. The assigned owner is Priya.",
+            "score": 0.4629622556545069
+          },
+          {
+            "chunkId": "a4acfcdd-9488-3e57-9f5d-c1736081ec84",
+            "sourceId": "9896a071-6c99-3dce-a7d0-8ce5e9a32ea5",
+            "title": "Cedar support hours",
+            "text": "Cedar support operates from 08:00 to 18:00 UTC on weekdays. Weekend support is for P1 incidents only.",
+            "score": 0.4117546081543437
+          },
+          {
+            "chunkId": "a90ec033-8cea-38cf-9854-8ebf1080d28b",
+            "sourceId": "2c40e028-ed8d-3114-9e87-479c339fdd78",
+            "title": "Harbor incident INC-881",
+            "text": "Harbor incident INC-881 is resolved. The root cause was database connection exhaustion.",
+            "score": 0.3750974866628857
+          }
+        ],
+        "cached": false,
+        "latencyMs": 6742,
+        "inputTokens": 395,
+        "outputTokens": 15,
+        "toolTrace": []
+      },
+      "expectedFactCoverage": 1.0,
+      "abstentionPhraseMatch": null,
+      "relevantSourceIds": [
+        "127e8e07-a2eb-3051-b51c-aab792e03008"
+      ]
+    },
+    {
+      "id": "q7",
+      "round": 1,
+      "precisionAt5": 0.2,
+      "recallAt5": 1.0,
+      "faithfulness": null,
+      "judgeClaims": [],
+      "firstTokenMs": 11579.305899998872,
+      "completeMs": 12398.40550001827,
+      "result": {
+        "queryId": "90aa0a1f-a6ad-4dad-a448-baeb056d2a2c",
+        "answer": "Pioneer cached query results expire after 10 minutes.",
+        "sources": [
+          {
+            "chunkId": "44dcdc9a-ff01-3d48-ba5c-5f4631893392",
+            "sourceId": "e9feec9c-449e-3b0a-bdf9-23d30d2b36d6",
+            "title": "Pioneer cache policy",
+            "text": "Pioneer query results expire after 10 minutes. Source updates invalidate cached query results.",
+            "score": 0.8951865142149203
+          },
+          {
+            "chunkId": "e7307432-e6c1-3765-82f0-c096bda027c9",
+            "sourceId": "2caeb212-365e-3949-bcd6-d9fc27384568",
+            "title": "Atlas backup policy",
+            "text": "Atlas backups run every 6 hours and are retained for 14 days. Restore drills run each Friday.",
+            "score": 0.42980021719930134
+          },
+          {
+            "chunkId": "0dac8818-790f-34e5-ae54-efb045303459",
+            "sourceId": "44d6f01b-3c89-3af3-9ab8-47ad54163bca",
+            "title": "Birch rollback policy",
+            "text": "For Birch, rollback when the error rate exceeds 4 percent for 5 minutes. The rollback owner is the release captain.",
+            "score": 0.40683486143252695
+          },
+          {
+            "chunkId": "a4acfcdd-9488-3e57-9f5d-c1736081ec84",
+            "sourceId": "9896a071-6c99-3dce-a7d0-8ce5e9a32ea5",
+            "title": "Cedar support hours",
+            "text": "Cedar support operates from 08:00 to 18:00 UTC on weekdays. Weekend support is for P1 incidents only.",
+            "score": 0.38953321541554176
+          },
+          {
+            "chunkId": "f93ecc7b-69bd-3f58-bcb1-38dbec6456df",
+            "sourceId": "d4ea3cf4-5e33-35ba-9ac7-b118dd119faf",
+            "title": "Maple incident INC-204",
+            "text": "Maple incident INC-204 was caused by an expired TLS certificate. The assigned owner is Priya.",
+            "score": 0.38568721500052966
+          }
+        ],
+        "cached": false,
+        "latencyMs": 9568,
+        "inputTokens": 386,
+        "outputTokens": 13,
+        "toolTrace": []
+      },
+      "expectedFactCoverage": 1.0,
+      "abstentionPhraseMatch": null,
+      "relevantSourceIds": [
+        "e9feec9c-449e-3b0a-bdf9-23d30d2b36d6"
+      ]
+    },
+    {
+      "id": "q8",
+      "round": 1,
+      "precisionAt5": 0.2,
+      "recallAt5": 1.0,
+      "faithfulness": null,
+      "judgeClaims": [],
+      "firstTokenMs": 7431.487099995138,
+      "completeMs": 8646.39619999798,
+      "result": {
+        "queryId": "0c46a105-38b1-4a3d-8584-bc2528a2392b",
+        "answer": "The root cause of Harbor incident INC-881 was database connection exhaustion.",
+        "sources": [
+          {
+            "chunkId": "a90ec033-8cea-38cf-9854-8ebf1080d28b",
+            "sourceId": "2c40e028-ed8d-3114-9e87-479c339fdd78",
+            "title": "Harbor incident INC-881",
+            "text": "Harbor incident INC-881 is resolved. The root cause was database connection exhaustion.",
+            "score": 0.7500640669522483
+          },
+          {
+            "chunkId": "f93ecc7b-69bd-3f58-bcb1-38dbec6456df",
+            "sourceId": "d4ea3cf4-5e33-35ba-9ac7-b118dd119faf",
+            "title": "Maple incident INC-204",
+            "text": "Maple incident INC-204 was caused by an expired TLS certificate. The assigned owner is Priya.",
+            "score": 0.5022467846282072
+          },
+          {
+            "chunkId": "a4acfcdd-9488-3e57-9f5d-c1736081ec84",
+            "sourceId": "9896a071-6c99-3dce-a7d0-8ce5e9a32ea5",
+            "title": "Cedar support hours",
+            "text": "Cedar support operates from 08:00 to 18:00 UTC on weekdays. Weekend support is for P1 incidents only.",
+            "score": 0.35080894505711613
+          },
+          {
+            "chunkId": "0dac8818-790f-34e5-ae54-efb045303459",
+            "sourceId": "44d6f01b-3c89-3af3-9ab8-47ad54163bca",
+            "title": "Birch rollback policy",
+            "text": "For Birch, rollback when the error rate exceeds 4 percent for 5 minutes. The rollback owner is the release captain.",
+            "score": 0.33600370740969654
+          },
+          {
+            "chunkId": "24de1338-f4e9-3cfe-a411-8a8f418d14eb",
+            "sourceId": "6b0f1b76-1323-3848-9e16-2badb6b37f2b",
+            "title": "Orion P1 policy",
+            "text": "Orion P1 incidents must be acknowledged within 17 minutes. Escalate to the Aurora support team.",
+            "score": 0.3309877395629906
+          }
+        ],
+        "cached": false,
+        "latencyMs": 6579,
+        "inputTokens": 395,
+        "outputTokens": 17,
+        "toolTrace": []
+      },
+      "expectedFactCoverage": 1.0,
+      "abstentionPhraseMatch": null,
+      "relevantSourceIds": [
+        "2c40e028-ed8d-3114-9e87-479c339fdd78"
+      ]
+    },
+    {
+      "id": "q9",
+      "round": 1,
+      "precisionAt5": 0.4,
+      "recallAt5": 1.0,
+      "faithfulness": null,
+      "judgeClaims": [],
+      "firstTokenMs": 7025.1496999990195,
+      "completeMs": 9155.430599988904,
+      "result": {
+        "queryId": "bc7cc613-59a8-448e-bda5-b0ae2b7077c9",
+        "answer": "For Orion, incidents must be acknowledged within 17 minutes. For Atlas, backups run every 6 hours and are retained for 14 days.",
+        "sources": [
+          {
+            "chunkId": "e7307432-e6c1-3765-82f0-c096bda027c9",
+            "sourceId": "2caeb212-365e-3949-bcd6-d9fc27384568",
+            "title": "Atlas backup policy",
+            "text": "Atlas backups run every 6 hours and are retained for 14 days. Restore drills run each Friday.",
+            "score": 0.6481604351755141
+          },
+          {
+            "chunkId": "24de1338-f4e9-3cfe-a411-8a8f418d14eb",
+            "sourceId": "6b0f1b76-1323-3848-9e16-2badb6b37f2b",
+            "title": "Orion P1 policy",
+            "text": "Orion P1 incidents must be acknowledged within 17 minutes. Escalate to the Aurora support team.",
+            "score": 0.5704892816910105
+          },
+          {
+            "chunkId": "0dac8818-790f-34e5-ae54-efb045303459",
+            "sourceId": "44d6f01b-3c89-3af3-9ab8-47ad54163bca",
+            "title": "Birch rollback policy",
+            "text": "For Birch, rollback when the error rate exceeds 4 percent for 5 minutes. The rollback owner is the release captain.",
+            "score": 0.543782398911157
+          },
+          {
+            "chunkId": "a4acfcdd-9488-3e57-9f5d-c1736081ec84",
+            "sourceId": "9896a071-6c99-3dce-a7d0-8ce5e9a32ea5",
+            "title": "Cedar support hours",
+            "text": "Cedar support operates from 08:00 to 18:00 UTC on weekdays. Weekend support is for P1 incidents only.",
+            "score": 0.4421513926387241
+          },
+          {
+            "chunkId": "a90ec033-8cea-38cf-9854-8ebf1080d28b",
+            "sourceId": "2c40e028-ed8d-3114-9e87-479c339fdd78",
+            "title": "Harbor incident INC-881",
+            "text": "Harbor incident INC-881 is resolved. The root cause was database connection exhaustion.",
+            "score": 0.41282628012685385
+          }
+        ],
+        "cached": false,
+        "latencyMs": 7118,
+        "inputTokens": 401,
+        "outputTokens": 32,
+        "toolTrace": []
+      },
+      "expectedFactCoverage": 1.0,
+      "abstentionPhraseMatch": null,
+      "relevantSourceIds": [
+        "6b0f1b76-1323-3848-9e16-2badb6b37f2b",
+        "2caeb212-365e-3949-bcd6-d9fc27384568"
+      ]
+    },
+    {
+      "id": "q10",
+      "round": 1,
+      "precisionAt5": null,
+      "recallAt5": null,
+      "faithfulness": null,
+      "judgeClaims": [],
+      "firstTokenMs": 8928.248799988069,
+      "completeMs": 10368.174500006717,
+      "result": {
+        "queryId": "158e0ad1-f20e-4384-8289-5fca1e64d924",
+        "answer": "The provided reference text does not contain any information about the CEO phone number for the fictional Zenith organization.",
+        "sources": [
+          {
+            "chunkId": "0dac8818-790f-34e5-ae54-efb045303459",
+            "sourceId": "44d6f01b-3c89-3af3-9ab8-47ad54163bca",
+            "title": "Birch rollback policy",
+            "text": "For Birch, rollback when the error rate exceeds 4 percent for 5 minutes. The rollback owner is the release captain.",
+            "score": 0.43214420015177607
+          },
+          {
+            "chunkId": "f93ecc7b-69bd-3f58-bcb1-38dbec6456df",
+            "sourceId": "d4ea3cf4-5e33-35ba-9ac7-b118dd119faf",
+            "title": "Maple incident INC-204",
+            "text": "Maple incident INC-204 was caused by an expired TLS certificate. The assigned owner is Priya.",
+            "score": 0.4213051930054079
+          },
+          {
+            "chunkId": "a4acfcdd-9488-3e57-9f5d-c1736081ec84",
+            "sourceId": "9896a071-6c99-3dce-a7d0-8ce5e9a32ea5",
+            "title": "Cedar support hours",
+            "text": "Cedar support operates from 08:00 to 18:00 UTC on weekdays. Weekend support is for P1 incidents only.",
+            "score": 0.4194529672443528
+          },
+          {
+            "chunkId": "24de1338-f4e9-3cfe-a411-8a8f418d14eb",
+            "sourceId": "6b0f1b76-1323-3848-9e16-2badb6b37f2b",
+            "title": "Orion P1 policy",
+            "text": "Orion P1 incidents must be acknowledged within 17 minutes. Escalate to the Aurora support team.",
+            "score": 0.4188667427818033
+          },
+          {
+            "chunkId": "a90ec033-8cea-38cf-9854-8ebf1080d28b",
+            "sourceId": "2c40e028-ed8d-3114-9e87-479c339fdd78",
+            "title": "Harbor incident INC-881",
+            "text": "Harbor incident INC-881 is resolved. The root cause was database connection exhaustion.",
+            "score": 0.4026766045903115
+          }
+        ],
+        "cached": false,
+        "latencyMs": 8063,
+        "inputTokens": 399,
+        "outputTokens": 22,
+        "toolTrace": []
+      },
+      "expectedFactCoverage": null,
+      "abstentionPhraseMatch": true,
+      "relevantSourceIds": []
+    }
+  ],
+  "errors": [],
+  "gates": {
+    "_description": "Versioned acceptance thresholds for the synthetic development set, not achieved benchmark results. Review changes instead of lowering thresholds to hide regressions. Judge scores remain audit data, not a deterministic CI gate.",
+    "recallAt5": 0.75,
+    "expectedFactCoverage": 0.75,
+    "abstentionPhraseMatch": 1.0
+  },
+  "gateFailures": [],
+  "passed": true
+}

@@ -1,0 +1,80 @@
+server:
+  address: ${SERVER_ADDRESS:127.0.0.1}
+  port: 8080
+spring:
+  application:
+    name: project1-agentic-rag
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5543/rag}
+    username: rag
+    password: local-day6-only
+    hikari:
+      connection-init-sql: SET search_path TO project1,public
+  flyway:
+    enabled: true
+    schemas: project1
+    default-schema: project1
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6381}
+      timeout: 2s
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP:localhost:9095}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      acks: all
+      properties:
+        enable.idempotence: true
+    consumer:
+      auto-offset-reset: earliest
+      enable-auto-commit: false
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    listener:
+      ack-mode: record
+  ai:
+    ollama:
+      base-url: ${OLLAMA_URL:http://localhost:11436}
+      chat:
+        options:
+          model: ${app.models.chat}
+          temperature: 0.0
+          num-ctx: ${OLLAMA_NUM_CTX:4096}
+          num-predict: ${OLLAMA_NUM_PREDICT:512}
+      embedding:
+        options:
+          model: ${app.models.embedding}
+    mcp:
+      server:
+        enabled: false
+    retry:
+      max-attempts: 2
+management:
+  endpoints:
+    web:
+      base-path: /
+      exposure:
+        include: health,prometheus
+      path-mapping:
+        prometheus: metrics
+  endpoint:
+    health:
+      show-details: never
+  metrics:
+    distribution:
+      percentiles-histogram:
+        rag.query.duration: true
+        rag.retrieval.duration: true
+        rag.first.token: true
+app:
+  models:
+    chat: ${OLLAMA_CHAT_MODEL:qwen2.5:1.5b}
+    embedding: ${OLLAMA_EMBEDDING_MODEL:nomic-embed-text:v1.5}
+  jwt:
+    secret: ${JWT_SECRET}
+  retrieval:
+    exact: ${RAG_EXACT_RETRIEVAL:true}
+  mcp:
+    url: http://localhost:8080

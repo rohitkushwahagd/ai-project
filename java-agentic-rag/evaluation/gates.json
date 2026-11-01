@@ -1,0 +1,6 @@
+{
+  "_description": "Versioned acceptance thresholds for the synthetic development set, not achieved benchmark results. Review changes instead of lowering thresholds to hide regressions. Judge scores remain audit data, not a deterministic CI gate.",
+  "recallAt5": 0.75,
+  "expectedFactCoverage": 0.75,
+  "abstentionPhraseMatch": 1.0
+}
